@@ -28,7 +28,7 @@ const Home: NextPage = () => {
       <SEO />
       <Header open={open} setOpen={setOpen} />
       <Banner />
-      <Ads />
+      {/* <Ads />
       <ProductScreen
         title="Nouveau Produit"
         openModal={openModal}
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
         className="!bg-primary"
         component={<BsChevronUp className="text-white text-2xl mx-auto" />}
       />
-      <Footer />
+      <Footer /> */}
     </Layout>
   );
 };

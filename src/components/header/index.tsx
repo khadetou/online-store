@@ -14,6 +14,9 @@ import { HiPhone } from "react-icons/hi";
 import MobileDrawer from "./drawer/mobile-drawer";
 import Image from "next/image";
 import Logo from "/public/images/online-logo.svg";
+import Cart from "/public/images/icons/cart.svg";
+import User from "/public/images/icons/user.svg";
+import WishList from "/public/images/icons/wishlist.svg";
 import { useRouter } from "next/router";
 import Cartdrawer from "../cart/drawer/cartdrawer";
 import { useAppDispatch, useAppSelector } from "@/hooks/index";
@@ -193,8 +196,8 @@ const Header: FC<HeaderProps> = ({ className, bgClassName, open, setOpen }) => {
     }
   };
 
-  const [langOpen, setLangOpen] = useState(false);
-  const [currencyOpen, setCurrencyOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(true);
+  const [currencyOpen, setCurrencyOpen] = useState(true);
 
   return (
     <header className="relative  h-[188px] bg-white">
@@ -276,15 +279,8 @@ const Header: FC<HeaderProps> = ({ className, bgClassName, open, setOpen }) => {
                 <MobileDrawer />
                 <Link passHref href="/">
                   <div className="flex items-center cursor-pointer ">
-                    <button className="w-[63px]  ">
-                      <Image
-                        src={Logo}
-                        alt="logo"
-                        layout="responsive"
-                        width="100%"
-                        height="100%"
-                        objectFit="contain"
-                      />
+                    <button className="w-[63px]">
+                      <Logo />
                     </button>
                     <h1 className="text-light-gray hidden sm:block text-sm lg:text-2xl uppercase font-bold ml-2">
                       <span className="font-light">Online </span> Store
@@ -292,10 +288,10 @@ const Header: FC<HeaderProps> = ({ className, bgClassName, open, setOpen }) => {
                   </div>
                 </Link>
               </div>
-              <div className=" lg:static absolute lg:w-[397px] left-0  w-full top-[100%] p-[10px] ">
+              <div className=" lg:static absolute lg:w-[500px] left-0  w-full top-[100%] p-[10px] mx-auto ">
                 <form
                   onSubmit={onSearch}
-                  className="h-[50px] w-full max-w-[500px] mx-auto mt-0 md:mt-2 lg:mt-0 relative group"
+                  className="h-[45px] w-full max-w-[500px] mx-auto mt-0 md:mt-2 lg:mt-0 relative group"
                 >
                   <input
                     type="text"
@@ -343,137 +339,37 @@ const Header: FC<HeaderProps> = ({ className, bgClassName, open, setOpen }) => {
                 </form>
               </div>
             </div>
-            <div>
-              <div className="hidden md:flex w-[209px] items-center mr-2">
-                <div className="mr-2">
-                  <HiPhone size={30} className="text-secondary" />
-                </div>
-                <div className="flex-col flex">
-                  <h3>
-                    <span className="text-black font-medium text-xs">
-                      Appelez Nous 24/7
-                    </span>
-                  </h3>
-                  <p className="text-secondary">(+221) 78 600 45 64</p>
-                </div>
-              </div>
-            </div>
+
             <div className="flex items-center">
               <div className="flex items-center">
                 <div className="flex justify-between">
-                  {[AiOutlineUser, AiOutlineShoppingCart].map((icons, key) => (
-                    <div
-                      key={key}
-                      className={`mr-2 ${
-                        icons === AiOutlineUser ? "sm:w-[171px]" : ""
-                      } last:mr-0 flex  cursor-pointer items-center`}
-                      onClick={() => {
-                        if (icons === AiOutlineUser) {
-                          setOpenProfile(!openProfile);
-                        }
-                      }}
-                    >
-                      <Icons
-                        open={open}
-                        setOpen={setOpen}
-                        Icon={icons}
-                        key={key}
-                      />
-                      <div className="relative group flex items-center w-full">
-                        {icons === AiOutlineUser && !isAuthenticated ? (
-                          <Link href="/login">
-                            <div className=" group flex items-center w-full">
-                              <p className="ml-2 hidden sm:block text-dark-gray text-sm font-semibold">
-                                {icons === AiOutlineUser
-                                  ? !isAuthenticated
-                                    ? "Se connecter"
-                                    : "Utilisateur"
-                                  : "Cart"}
-                              </p>
-                              {icons === AiOutlineUser && isAuthenticated && (
-                                <RiArrowDropDownLine
-                                  size="27"
-                                  className={`${
-                                    openProfile && "rotate-180"
-                                  } transition-all ease-in-out duration-300 text-dark-gray`}
-                                />
-                              )}
-                            </div>
-                          </Link>
-                        ) : (
-                          icons === AiOutlineUser &&
-                          isAuthenticated && (
-                            <div className="flex items-center group  w-full">
-                              <p className="ml-2 hidden sm:block text-dark-gray text-sm font-semibold">
-                                {icons === AiOutlineUser
-                                  ? !isAuthenticated
-                                    ? "Se connecter"
-                                    : "Utilisateur"
-                                  : "Cart"}
-                              </p>
-                              {icons === AiOutlineUser && isAuthenticated && (
-                                <RiArrowDropDownLine
-                                  size="27"
-                                  className={`${
-                                    openProfile && "rotate-180"
-                                  } transition-all ease-in-out duration-300 text-dark-gray`}
-                                />
-                              )}
-
-                              <div
-                                className={`absolute !w-[200px] rounded-md top-7 z-10 bg-white transition-transform ease-linear duration-100 shadow-lg  text-dark-gray  
-                              ${
-                                openProfile
-                                  ? "opacity-100 visible translate-y-[12px] -translate-x-40  lg:translate-x-0"
-                                  : "invisible -translate-x-40 translate-y-12 opacity-0"
-                              }`}
-                              >
-                                <Link href="/profile">
-                                  <a className="!text-[14px] px-5 inline-block w-full py-4 hover:text-secondary hover:bg-gray-100 !font-normal ">
-                                    Profile
-                                  </a>
-                                </Link>
-
-                                {user && user.roles.includes("admin") && (
-                                  <Link href="/admin/users">
-                                    <a className="!text-[14px] px-5 inline-block w-full py-4  hover:text-secondary hover:bg-gray-100 !font-normal ">
-                                      Utilsateurs
-                                    </a>
-                                  </Link>
-                                )}
-                                {user && user.roles.includes("admin") && (
-                                  <Link href="/admin/products">
-                                    <a className="!text-[14px] px-5 inline-block w-full py-4  hover:text-secondary hover:bg-gray-100 !font-normal ">
-                                      Produits
-                                    </a>
-                                  </Link>
-                                )}
-                                {user && user.roles.includes("admin") && (
-                                  <Link href="/admin/orders">
-                                    <a className="!text-[14px] px-5 inline-block w-full py-4  hover:text-secondary hover:bg-gray-100 !font-normal ">
-                                      Commandes
-                                    </a>
-                                  </Link>
-                                )}
-                                <button
-                                  className="w-full"
-                                  onClick={() => {
-                                    emptyCart();
-                                    clearCartMetadata();
-                                    dispatch(logout());
-                                  }}
-                                >
-                                  <a className="!text-[14px] px-5 inline-block w-full py-4  hover:text-secondary hover:bg-gray-100 !font-semibold ">
-                                    Se Deconnecter
-                                  </a>
-                                </button>
-                              </div>
-                            </div>
-                          )
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                  <div
+                    className={`mr-2 last:mr-0 flex  cursor-pointer items-center `}
+                    onClick={() => {
+                      setOpenProfile(!openProfile);
+                    }}
+                  >
+                    <User className="w-[36px] h-[42px] fil-[#444444] hover:fill-orange-500 transition-all duration-300 ease-in-out" />
+                  </div>
+                  <div
+                    className={`mr-2 last:mr-0 flex  cursor-pointer items-center ml-6 group relative`}
+                  >
+                    <WishList className="w-[36px] h-[42px] fill-[#444444] group-hover:fill-orange-500 transition-all duration-300 ease-in-out" />
+                    <span className="rounded-full text-[12px] absolute w-[20px] h-[20px] bottom-0 px-1 font-semibold leading-5 group-hover:bg-black transition-all ease-in-out duration-300 bg-light-gray text-white top-auto -right-1 text-center ">
+                      3
+                    </span>
+                  </div>
+                  <div
+                    className={`mr-2 last:mr-0 flex group cursor-pointer items-center ml-6 relative`}
+                  >
+                    <Cart
+                      className="w-[34px] h-[42px] fill-[#444444] group-hover:fill-orange-500 transition-all duration-300 ease-in-out"
+                      fill="#444444"
+                    />
+                    <span className="rounded-full text-[12px] absolute w-[20px] h-[20px] bottom-0 px-1 font-semibold leading-5 group-hover:bg-black transition-all ease-in-out duration-300 bg-light-gray text-white top-auto -right-1 text-center">
+                      2
+                    </span>
+                  </div>
                 </div>
               </div>
               <Cartdrawer open={open} setOpen={setOpen} />
