@@ -344,29 +344,26 @@ const Header: FC<HeaderProps> = ({ className, bgClassName, open, setOpen }) => {
               <div className="flex items-center">
                 <div className="flex justify-between">
                   <div
-                    className={`mr-2 last:mr-0 flex  cursor-pointer items-center `}
+                    className={`mr-2 last:mr-0 flex  cursor-pointer items-center pr-[9px] `}
                     onClick={() => {
                       setOpenProfile(!openProfile);
                     }}
                   >
-                    <User className="w-[36px] h-[42px] fil-[#444444] hover:fill-orange-500 transition-all duration-300 ease-in-out" />
+                    <User className="w-[36px] h-[42px] fill-[#444444] hover:fill-orange-500 transition-all duration-300 ease-in-out" />
                   </div>
                   <div
-                    className={`mr-2 last:mr-0 flex  cursor-pointer items-center ml-6 group relative`}
+                    className={`mr-2 last:mr-0 flex  cursor-pointer items-center ml-6 group relative pr-[9px]`}
                   >
                     <WishList className="w-[36px] h-[42px] fill-[#444444] group-hover:fill-orange-500 transition-all duration-300 ease-in-out" />
-                    <span className="rounded-full text-[12px] absolute w-[20px] h-[20px] bottom-0 px-1 font-semibold leading-5 group-hover:bg-black transition-all ease-in-out duration-300 bg-light-gray text-white top-auto -right-1 text-center ">
+                    <span className="rounded-full text-[12px] absolute w-[20px] h-[20px] bottom-0 px-1 font-semibold leading-5 group-hover:bg-black transition-all ease-in-out duration-300 bg-light-gray text-white top-auto right-0 text-center ">
                       3
                     </span>
                   </div>
                   <div
-                    className={`mr-2 last:mr-0 flex group cursor-pointer items-center ml-6 relative`}
+                    className={`mr-2 last:mr-0 flex group cursor-pointer items-center ml-6 relative pr-[9px]`}
                   >
-                    <Cart
-                      className="w-[34px] h-[42px] fill-[#444444] group-hover:fill-orange-500 transition-all duration-300 ease-in-out"
-                      fill="#444444"
-                    />
-                    <span className="rounded-full text-[12px] absolute w-[20px] h-[20px] bottom-0 px-1 font-semibold leading-5 group-hover:bg-black transition-all ease-in-out duration-300 bg-light-gray text-white top-auto -right-1 text-center">
+                    <Cart className="w-[34px] h-[42px] fill-[#444444] group-hover:fill-orange-500 transition-all duration-300 ease-in-out" />
+                    <span className="rounded-full text-[12px] absolute w-[20px] h-[20px] bottom-0 px-1 font-semibold leading-5 group-hover:bg-black transition-all ease-in-out duration-300 bg-light-gray text-white top-auto right-0 text-center">
                       2
                     </span>
                   </div>
